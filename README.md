@@ -1,1 +1,2 @@
 # StockerAI-frontend
+uses MERN
