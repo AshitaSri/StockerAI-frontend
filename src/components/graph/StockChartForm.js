@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, TextField, MenuItem, Button, CircularProgress, Typography, Paper, Box } from '@mui/material';
 import StockChart from './StockChart';
 import { getStockData } from './stockService';
-import './App.css';
+import './graph.css';
 
 function StockChartForm() {
   const [symbol, setSymbol] = useState('');
