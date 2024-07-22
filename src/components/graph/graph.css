@@ -1,0 +1,23 @@
+.App {
+  padding-top: 40px;
+}
+
+.form-container {
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+}
+
+h1 {
+  color: #007bff;
+}
+
+button {
+  margin-top: 20px;
+}
+
+p {
+  text-align: center;
+  color: #6c757d;
+}
