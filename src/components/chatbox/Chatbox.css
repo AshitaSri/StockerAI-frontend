@@ -15,6 +15,25 @@ html, body {
   align-items: center;
   width: 100%;
 }
+
+.chatbox-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.chatbox-toggle {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100px;
+}
+
 .chatbox {
   width: 400px;
   max-width: 100%;
@@ -24,8 +43,8 @@ html, body {
   display: flex;
   flex-direction: column;
   background-color: #f9f9f9;
-  font-family: Arial, sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 .chatbox-header {
@@ -35,6 +54,17 @@ html, body {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .chatbox-messages {
