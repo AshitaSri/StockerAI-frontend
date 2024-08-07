@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, TextField, MenuItem, Button, CircularProgress, Typography, Paper, Box } from '@mui/material';
 import StockChart from './StockChart';
 import { getStockData, calculateSMA, calculateEMA, calculateMACD, calculateRSI, calculateBollingerBands, calculateStochastic, calculateADX } from './stockService';
 import './graph.css';
 
-function StockChartForm({ indicatorData = {}, selectedIndicators = [], onIndicatorClick, onFetchIndicatorData }) {
+function StockChartForm() {
   const [symbol, setSymbol] = useState('');
   const [interval, setInterval] = useState('minute');
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (symbol && selectedIndicators.length > 0) {
-        for (const indicator of selectedIndicators) {
-          await onFetchIndicatorData(symbol, indicator);
-        }
-      }
-    };
-    fetchData();
-  }, [symbol, selectedIndicators, onFetchIndicatorData]);
+  const [selectedIndicators, setSelectedIndicators] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -141,6 +131,10 @@ function StockChartForm({ indicatorData = {}, selectedIndicators = [], onIndicat
     }
   };
 
+  const handleIndicatorClick = (indicator) => {
+    setSelectedIndicators(prev => [...prev, indicator]);
+  };
+
   return (
     <Container maxWidth="sm" className="App">
       <Typography variant="h3" component="h1" gutterBottom align="center">
@@ -187,8 +181,9 @@ function StockChartForm({ indicatorData = {}, selectedIndicators = [], onIndicat
           <Button
             key={indicator}
             variant="contained"
-            color={selectedIndicators.includes(indicator) ? "secondary" : "primary"}
-            onClick={() => onIndicatorClick(indicator)}
+            color="primary"
+            onClick={() => handleIndicatorClick(indicator)}
+            disabled={selectedIndicators.includes(indicator)}
             style={{ margin: '0 10px 10px 0' }}
           >
             {indicator}
