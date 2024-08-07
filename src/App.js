@@ -1,20 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Home from './pages/home/home';
+import Tech from './pages/TechAnaly/Tech';
+import Funda from './pages/fundaAnaly/funda';
+import Future from './pages/f&O/future';
+
 import Chatbox from './components/chatbox/Chatbox';
+import Navbar from './components/navbar/navbar';
 import './App.css';
-import StockChartForm from './components/graph/StockChartForm';
+
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Stocker AI</h1>
-      </header>
-      <main className="main-content">
-        <div className="content-container">
-          <Chatbox />
-          <StockChartForm />
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Chatbox />
+        <main className="main-content">
+          <div className="content-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/f.a" element={<Funda />} />
+              <Route path="/t.a" element={<Tech />} />
+              <Route path="/f.o" element={<Future />} />
+            </Routes>
+          </div>
+        </main>
+      </div>
+    </Router>
   );
 }
 
