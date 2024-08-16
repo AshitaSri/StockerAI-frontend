@@ -127,41 +127,73 @@ body {
     padding-right: 10px;
   }
   
-  .positions-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  .positions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
-  .position-item {
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ddd;
-    transition: background-color 0.3s;
+  .positions-table th, .positions-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
   }
   
-  .position-item:hover {
-    background-color: #e9ecef;
-  }
-  
-  .position-details {
-    display: flex;
-    flex-direction: column;
+  .positions-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
     color: #333;
-    flex-grow: 1;
   }
   
-  .position-details span {
-    margin-bottom: 5px;
-    font-size: 14px;
+  .positions-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .position-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .position-type.buy {
+    background-color: #e6f7ff;
+    color: #0066cc;
+  }
+  
+  .position-type.sell {
+    background-color: #fff1f0;
+    color: #cc0000;
+  }
+  
+  .position-type.call {
+    border-left: 4px solid #52c41a;
+  }
+  
+  .position-type.put {
+    border-left: 4px solid #faad14;
   }
   
   .delete-button {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff7875;
+  }
+  
+  .position-icon {
+    margin-right: 8px;
+  }
+
+  /* .delete-button {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -174,7 +206,7 @@ body {
   
   .delete-button:hover {
     background-color: #c82333;
-  }
+  } */
   
   .backtest-section {
     background-color: #f8f9fa;
