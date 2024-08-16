@@ -145,21 +145,45 @@ const Future = () => {
       <button onClick={handleAddPosition} className="add-button">Add Position</button>
       
       <div className="positions-section">
-        <h3>Added Positions</h3>
+        {/* <h3>Added Positions</h3> */}
         {positions.length > 0 ? (
-          <ul className="positions-list">
-            {positions.map((position, index) => (
-              <li key={index} className="position-item">
-                <div className="position-details">
-                  <span><strong>{position.index} - {position.segment} - {position.optionType} - {position.actionType}</strong></span>
-                  <span>Strike: {position.strikePrice}, Lots: {position.totalLot}</span>
-                  <span>Expiry: {position.expiryType}</span>
-                  <span>Stop Loss: {position.stopLoss || 'N/A'}, Target: {position.target || 'N/A'}</span>
-                </div>
-                <button onClick={() => handleDeletePosition(index)} className="delete-button">Delete</button>
-              </li>
-            ))}
-          </ul>
+          <table className="positions-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Index</th>
+                <th>Strike</th>
+                <th>Lots</th>
+                <th>Expiry</th>
+                <th>SL / Target</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {positions.map((position, index) => (
+                <tr key={index}>
+                  <td>
+                    <span className={`position-type ${position.actionType} ${position.optionType}`}>
+                      <span className="position-icon">
+                        {position.actionType === 'buy' ? '🔼' : '🔽'}
+                      </span>
+                      {position.actionType.toUpperCase()} {position.optionType.toUpperCase()}
+                    </span>
+                  </td>
+                  <td>{position.index}</td>
+                  <td>{position.strikePrice}</td>
+                  <td>{position.totalLot}</td>
+                  <td>{position.expiryType}</td>
+                  <td>{position.stopLoss || 'N/A'} / {position.target || 'N/A'}</td>
+                  <td>
+                    <button onClick={() => handleDeletePosition(index)} className="delete-button">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : (
           <p>No positions added yet.</p>
         )}
